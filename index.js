@@ -11,8 +11,18 @@ app.use(cookieParser());
 
 // Set up handlebars
 const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+var hbs = exphbs.create({
+    helpers: {
+        valuesEqual: function (value1, value2) {
+         return (value1 == value2); 
+     	},
+    },
+    defaultLayout: "main"
+});
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
+
+
 
 app.use(express.static(__dirname + "/public"));
 
@@ -22,7 +32,6 @@ function randomInsanity(insanity) {
 		random2: Math.floor(Math.random() * (50 * (insanity -1))),
 		random3: Math.floor(Math.random() * (50 * (insanity -1)))
 	}
-
 	return random;
 }
 

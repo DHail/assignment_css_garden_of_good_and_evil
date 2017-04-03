@@ -17,6 +17,17 @@ app.get('/', (req, res) => {
 	res.render("index");
 })
 
+app.post("/settings", (req, res) => {
+  // res.cookie("name", req.body.name);
+  console.log(req.body);
+  res.cookie('attitude', req.body.attitude);
+  res.cookie('food', req.body.food);
+  res.cookie('color', req.body.color);
+  res.cookie('insanity', req.body.insanity);
+
+  res.redirect("back");
+});
+
 
 app.listen(3000, () => {
   console.log("Listening!");

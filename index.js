@@ -12,6 +12,9 @@ app.use(cookieParser());
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+exphbs.registerPartial('goodList', )
+
+app.use(express.static(__dirname + "/public"));
 
 app.get('/', (req, res) => {
 	let {attitude, food, color, insanity} = req.cookies;

@@ -77,18 +77,11 @@
 
 
 <div class="container">
-	<h1>Our garden of good and evil</h1>
-	<h3>{{attitude}}</h3>
-	<h3>{{food}}</h3>
-	<h3>{{color}}</h3>
-	<h3>{{insanity}}</h3>
-
-	<h3>Likes</h3>
-	<ul>
-		<li>{{food}}</li>
-		<li>{{color}}</li>
-		</
-
+  {{#if goodAttitude}}
+	{{>good color=color food=food}}
+  {{else}}
+  	{{>evil color=color food=food}}
+  {{/if}}
 
 
 

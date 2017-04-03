@@ -28,43 +28,20 @@ app.use(express.static(__dirname + "/public"));
 
 function randomInsanity(insanity) {
 	let random = {
-		random1: Math.floor(Math.random() * (50 * (insanity -1))),
-		random2: Math.floor(Math.random() * (50 * (insanity -1))),
-		random3: Math.floor(Math.random() * (50 * (insanity -1)))
+		random1: Math.floor(Math.random() * (200 * (insanity -1))),
+		random2: Math.floor(Math.random() * (200 * (insanity -1))),
+		random3: Math.floor(Math.random() * (200 * (insanity -1)))
 	}
 	return random;
 }
 
 app.get('/', (req, res) => {
 	let {attitude, food, color, insanity} = req.cookies;
-	let goodAttitude = false;
-	let blue, red, green, yellow, purple;
-	if (attitude === "good") {goodAttitude = true};
-
-	switch (color) {
-		case 'Blue':
-		blue = true;
-		break;
-		case 'Red':
-		red = true;
-		break;
-		case 'Green':
-		green = true;
-		break;
-		case 'Yellow':
-		yellow = true;
-		break;		
-		case 'Purple':
-		purple = true;
-		break;
-	}
-
 	let randomIn = randomInsanity(insanity);
 
-	res.render("index", {attitude, goodAttitude, food, color, blue, red, green, yellow, purple, insanity, randomIn});
-	
+	res.render("index", {attitude, food, color, insanity, randomIn});
+});
 
-})
 
 app.post("/settings", (req, res) => {
   // res.cookie("name", req.body.name);

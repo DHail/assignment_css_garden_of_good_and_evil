@@ -4,7 +4,7 @@
         <form class="navbar-form navbar-left" role="search" method="post" action="/settings">
 
           <div class="form-group">
-          	{{#if goodAttitude}}
+          	{{#if (valuesEqual attitude 'good')}}
 	            <div class="radio">
 	              <label>
 	                <input type="radio" name="attitude" id="good" value="good" checked>
@@ -55,13 +55,9 @@
     </div>
   </div>
 
-  {{#if (valuesEqual 'blue' 'blue')}}
-  	<p>Mixing if and helper</p>
-  {{/if}}
-
 
 <div class="container">
-  {{#if goodAttitude}}
+  {{#if (valuesEqual attitude 'good')}}
 	{{>good color=color food=food random=randomIn}}
   {{else}}
   	{{>evil color=color food=food random=randomIn}}

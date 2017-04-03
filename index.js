@@ -16,22 +16,23 @@ app.set("view engine", "handlebars");
 app.get('/', (req, res) => {
 	let {attitude, food, color, insanity} = req.cookies;
 	let goodAttitude = false;
-	let blue, red, green, yellow, purple = false;
-	if (attitude === "good") {goodAttitude = true}
+	let blue, red, green, yellow, purple;
+	if (attitude === "good") {goodAttitude = true};
+
 	switch (color) {
-		case 'blue':
+		case 'Blue':
 		blue = true;
 		break;
-		case 'red':
+		case 'Red':
 		red = true;
 		break;
-		case 'green':
+		case 'Green':
 		green = true;
 		break;
-		case 'yellow':
+		case 'Yellow':
 		yellow = true;
 		break;		
-		case 'purple':
+		case 'Purple':
 		purple = true;
 		break;
 	}

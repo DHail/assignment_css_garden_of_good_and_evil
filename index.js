@@ -14,7 +14,30 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.get('/', (req, res) => {
-	res.render("index");
+	let {attitude, food, color, insanity} = req.cookies;
+	let goodAttitude = false;
+	let blue, red, green, yellow, purple = false;
+	if (attitude === "good") {goodAttitude = true}
+	switch (color) {
+		case 'blue':
+		blue = true;
+		break;
+		case 'red':
+		red = true;
+		break;
+		case 'green':
+		green = true;
+		break;
+		case 'yellow':
+		yellow = true;
+		break;		
+		case 'purple':
+		purple = true;
+		break;
+	}
+	res.render("index", {attitude, goodAttitude, food, color, blue, red, green, yellow, purple, insanity});
+	
+
 })
 
 app.post("/settings", (req, res) => {

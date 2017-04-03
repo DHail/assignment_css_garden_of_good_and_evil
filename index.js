@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const {getSessionData} = require("./oursessions");
 
 // Set up form body parsing
 const bodyParser = require("body-parser");
@@ -38,9 +39,12 @@ function randomInsanity(insanity) {
 app.get('/', (req, res) => {
 	let {attitude, food, color, insanity} = req.cookies;
 	let randomIn = randomInsanity(insanity);
-
-	res.render("index", {attitude, food, color, insanity, randomIn});
+  sessionID = req.cookies['session_id'];
+  getSessionData(req, res, sessionID);
+  let views = req.session.views;
+	res.render("index", {attitude, food, color, insanity, randomIn, views});
 });
+
 
 
 app.post("/settings", (req, res) => {

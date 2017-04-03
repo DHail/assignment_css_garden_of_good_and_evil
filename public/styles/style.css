@@ -10,3 +10,13 @@
 	background-color: black;
 	color: white;
 }
+
+#inline {
+	display: inline;
+	margin-left: 50px;
+	font-size: 16px;
+}
+
+#inline span {
+	font-size: 24px;
+}
